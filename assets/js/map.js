@@ -1,10 +1,10 @@
-fetch('assets/world-map.svg')
+fetch('assets/world.svg')
     .then(response => response.text())
     .then(svg => {
-        document.getElementById('world-map').innerHTML = svg;
+        document.getElementById('world').innerHTML = svg;
 
         // Add click events to countries
-        document.querySelectorAll('#world-map path').forEach(country => {
+        document.querySelectorAll('#world path').forEach(country => {
             country.addEventListener('click', () => {
                 const countryName = country.getAttribute('data-name');
                 if (countryName) {
