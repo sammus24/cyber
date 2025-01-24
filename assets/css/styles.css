@@ -6,7 +6,9 @@ body {
     margin: 0;
     padding: 0;
 }
-
+body {
+    color: #000;
+}
 
 .container {
     padding: 20px;
