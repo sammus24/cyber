@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capture the Flag - World Map</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>CTF Questions</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <style>
+        #map { height: 100vh; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Capture the Flag</h1>
-        <p>Click a country on the map to capture its flag by answering a question!</p>
-        <div id="map-container">
-            <!-- Map SVG will be dynamically loaded -->
-            <svg id="world-map"></svg>
-        </div>
-        <div id="question-modal" class="hidden">
-            <h2 id="country-name"></h2>
-            <p id="question"></p>
-            <input type="text" id="answer" placeholder="Enter your answer">
-            <button onclick="submitAnswer()">Submit</button>
-            <button onclick="closeModal()">Close</button>
-        </div>
-    </div>
-    <script src="assets/js/map.js"></script>
-    <script src="assets/js/main.js"></script>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map').setView([20, 0], 2);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+        async function fetchQuestions() {
+            const res = await fetch('http://localhost:5000/questions');
+            const data = await res.json();
+
+            data.forEach(question => {
+                const marker = L.marker([question.location.lat, question.location.lng]).addTo(map);
+                marker.bindPopup(`<b>${question.title}</b><br>${question.description}<br>Points: ${question.points}`);
+            });
+        }
+
+        fetchQuestions();
+    </script>
 </body>
 </html>
