@@ -1,4 +1,5 @@
-fetch('assets/world.svg')
+import sha256 from 'crypto-js/sha256';
+fetch('./assets/world.svg')
     .then(response => response.text())
     .then(svg => {
         document.getElementById('world').innerHTML = svg;
