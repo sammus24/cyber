@@ -1,13 +1,10 @@
 body {
-    background: #000 url('assets/images/world-map.png') no-repeat center center fixed;
+    background: #000 url('../images/world-map.png') no-repeat center center fixed;
     background-size: cover;
-    color: #fff;
+    color: #fff; /* White text for contrast */
     text-align: center;
     margin: 0;
     padding: 0;
-}
-body {
-    color: #000;
 }
 
 .container {
