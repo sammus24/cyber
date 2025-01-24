@@ -1,5 +1,5 @@
 body {
-    background: #000 url('../images/world-map.png') no-repeat center center fixed;
+    background: #555 url('../images/world-map.png') no-repeat center center fixed;
     background-size: cover;
     color: #fff; /* White text for contrast */
     text-align: center;
