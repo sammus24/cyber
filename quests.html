@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Nirav CTF - Quests</title>
+    
+    <link rel="stylesheet" href="css/bootstrap4-neon-glow.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <div class="navbar-dark text-white">
+        <div class="container">
+            <nav class="navbar px-0 py-0 navbar-expand-lg navbar-dark">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a href="index.html" class="p-3 text-light bold">Home</a>
+                        <a href="about.html" class="p-3 text-light bold">About</a>
+                        <a href="hackerboard.html" class="p-3 text-light bold">Hackerboard</a>
+                        <a href="quests.html" class="p-3 text-white bold">Challenges</a>
+                        <a href="#" class="p-3 text-light bold">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="jumbotron bg-transparent mb-0 pt-0 radius-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 text-center">
+                    <h1 class="display-1 bold color_white content__title">QUESTS<span class="vim-caret">&nbsp;</span></h1>
+                    <p class="text-grey text-spacey hackerFont lead mb-5">
+                        It's time to show the world what you can do!
+                    </p>
+                </div>
+            </div>
+            <div class="row hackerFont">
+                <div class="col-md-12">
+                    <h4>Challenges</h4>
+                </div>
+
+                <!-- Directory Traversal -->
+                <div class="col-md-4 mb-3">
+                    <div class="card category_web">
+                        <div class="card-header" data-target="#problem_id_1" data-toggle="collapse">
+                            Directory Traversal <span class="badge">80 points</span>
+                        </div>
+                        <div id="problem_id_1" class="collapse show card-body">
+                            <blockquote class="card-blockquote">
+                                <p>There is a web server with a file inclusion vulnerability. Try to exploit it using a directory traversal attack to access sensitive files like `/etc/passwd`.</p>
+                                <button class='btn btn-warning mt-2' onclick='revealHint(this, "Try using `../` to navigate directories.")'>Reveal Hint (-5 points)</button>
+                                <p class='hint-text' style='display: none;'><strong>Hint:</strong> Try using `../` to navigate directories.</p>
+                            </blockquote>
+                            <input type='text' class='form-control mt-2' placeholder='Enter your answer' id='answer-problem_id_1'>
+                            <button class='btn btn-primary mt-2' onclick='submitAnswer("problem_id_1")'>Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reverse Shell -->
+                <div class="col-md-4 mb-3">
+                    <div class="card category_web">
+                        <div class="card-header" data-target="#problem_id_2" data-toggle="collapse">
+                            Reverse Shell <span class="badge">100 points</span>
+                        </div>
+                        <div id="problem_id_2" class="collapse show card-body">
+                            <blockquote class="card-blockquote">
+                                <p>The server accepts user input. Exploit it to execute a reverse shell and connect back to your local machine.</p>
+                                <button class='btn btn-warning mt-2' onclick='revealHint(this, "Look for command injection vulnerabilities in the input fields.")'>Reveal Hint (-5 points)</button>
+                                <p class='hint-text' style='display: none;'><strong>Hint:</strong> Look for command injection vulnerabilities in the input fields.</p>
+                            </blockquote>
+                            <input type='text' class='form-control mt-2' placeholder='Enter your answer' id='answer-problem_id_2'>
+                            <button class='btn btn-primary mt-2' onclick='submitAnswer("problem_id_2")'>Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XOR Encryption -->
+                <div class="col-md-4 mb-3">
+                    <div class="card category_crypto">
+                        <div class="card-header" data-target="#problem_id_3" data-toggle="collapse">
+                            XOR Encryption <span class="badge">50 points</span>
+                        </div>
+                        <div id="problem_id_3" class="collapse show card-body">
+                            <blockquote class="card-blockquote">
+                                <p>A file is XOR-encrypted. Use a known key and decrypt it to find the hidden message.</p>
+                                <button class='btn btn-warning mt-2' onclick='revealHint(this, "Use `xor` in a tool or script to decrypt the message.")'>Reveal Hint (-5 points)</button>
+                                <p class='hint-text' style='display: none;'><strong>Hint:</strong> Use `xor` in a tool or script to decrypt the message.</p>
+                            </blockquote>
+                            <input type='text' class='form-control mt-2' placeholder='Enter your answer' id='answer-problem_id_3'>
+                            <button class='btn btn-primary mt-2' onclick='submitAnswer("problem_id_3")'>Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SQL Injection -->
+                <div class="col-md-4 mb-3">
+                    <div class="card category_web">
+                        <div class="card-header" data-target="#problem_id_4" data-toggle="collapse">
+                            Basic SQL Injection <span class="badge">100 points</span>
+                        </div>
+                        <div id="problem_id_4" class="collapse show card-body">
+                            <blockquote class="card-blockquote">
+                                <p>Perform a basic SQL Injection attack to retrieve a hidden flag from the database.</p>
+                                <button class='btn btn-warning mt-2' onclick='revealHint(this, "Try using `' OR 1=1--` for authentication bypass.")'>Reveal Hint (-5 points)</button>
+                                <p class='hint-text' style='display: none;'><strong>Hint:</strong> Try using `' OR 1=1--` for authentication bypass.</p>
+                            </blockquote>
+                            <input type='text' class='form-control mt-2' placeholder='Enter your answer' id='answer-problem_id_4'>
+                            <button class='btn btn-primary mt-2' onclick='submitAnswer("problem_id_4")'>Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Steganography (Image) -->
+                <div class="col-md-4 mb-3">
+                    <div class="card category_forensics">
+                        <div class="card-header" data-target="#problem_id_5" data-toggle="collapse">
+                            Steganography (Image) <span class="badge">100 points</span>
+                        </div>
+                        <div id="problem_id_5" class="collapse show card-body">
+                            <blockquote class="card-blockquote">
+                                <p>There's an image with hidden data. Can you find the message inside it?</p>
+                                <button class='btn btn-warning mt-2' onclick='revealHint(this, "Try using a tool like `zsteg` or `steghide` to extract hidden data.")'>Reveal Hint (-5 points)</button>
+                                <p class='hint-text' style='display: none;'><strong>Hint:</strong> Try using a tool like `zsteg` or `steghide` to extract hidden data.</p>
+                            </blockquote>
+                            <input type='text' class='form-control mt-2' placeholder='Enter your answer' id='answer-problem_id_5'>
+                            <button class='btn btn-primary mt-2' onclick='submitAnswer("problem_id_5")'>Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Command Injection -->
+                <div class="col-md-4 mb-3">
+                    <div class="card category_web">
+                        <div class="card-header" data-target="#problem_id_6" data-toggle="collapse">
+                            Command Injection <span class="badge">100 points</span>
+                        </div>
+                        <div id="problem_id_6" class="collapse show card-body">
+                            <blockquote class="card-blockquote">
+                                <p>A web app takes user input without sanitizing it. Perform a command injection attack to execute arbitrary commands on the server.</p>
+                                <button class='btn btn-warning mt-2' onclick='revealHint(this, "Look for vulnerable input fields that may allow command injection.")'>Reveal Hint (-5 points)</button>
+                                <p class='hint-text' style='display: none;'><strong>Hint:</strong> Look for vulnerable input fields that may allow command injection.</p>
+                            </blockquote>
+                            <input type='text' class='form-control mt-2' placeholder='Enter your answer' id='answer-problem_id_6'>
+                            <button class='btn btn-primary mt-2' onclick='submitAnswer("problem_id_6")'>Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More problems will follow here -->
+                <!-- Add additional problems with similar structure -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Reveal Hint Function -->
+    <script>
+        function revealHint(button, hintText) {
+            let hint = button.nextElementSibling;
+            if (hint.style.display === "none" || hint.style.display === "") {
+                hint.style.display = "block";
+                button.disabled = true;  // Disable button after revealing hint
+            }
+        }
+        
+    </script>
+
+    <!-- Submit Answer Function -->
+    <script>
+        const API_URL = "http://127.0.0.1:5000";
+
+        async function submitAnswer(problemId) {
+            let inputField = document.getElementById(`answer-${problemId}`);
+            let userAnswer = inputField.value.trim();
+            let username = localStorage.getItem("username");
+
+            if (!username) {
+                alert("You are not logged in. Redirecting to login.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            if (userAnswer === "") {
+                alert("Please enter an answer before submitting.");
+                return;
+            }
+
+            try {
+                console.log(`Submitting answer for ${problemId} as ${username}, Answer: ${userAnswer}`);
+
+                const response = await fetch(`${API_URL}/submit`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, problemId, answer: userAnswer })
+                });
+
+                const data = await response.json();
+                console.log("Submission Response:", data);
+
+                if (data.status === "correct") {
+                    alert("✅ Correct! You've earned points.");
+                    document.querySelector(`[data-target="#${problemId}"]`).classList.add("solved");
+                    updateScore(username); // Refresh the score
+                } else {
+                    alert("❌ Incorrect! Try again.");
+                }
+
+                inputField.value = "";
+            } catch (error) {
+                console.error("Error submitting answer:", error);
+                alert("❌ Error connecting to server.");
+            }
+        }
+
+        // Update score function
+        async function updateScore(username) {
+            try {
+                const response = await fetch(`${API_URL}/get_score?username=${username}`);
+                const data = await response.json();
+                document.getElementById("score-display").innerText = `Score: ${data.score}`;
+            } catch (error) {
+                console.error("Error updating score:", error);
+            }
+        }
+
+        // Ensure score is updated on page load
+        window.onload = function () {
+            let username = localStorage.getItem("username");
+            if (username) {
+                updateScore(username);
+            }
+        };
+    </script>
+
+</body>
+</html>
